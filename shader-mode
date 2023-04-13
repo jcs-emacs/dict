@@ -1,2 +1,454 @@
-UnityObjectToClipPos	[function]	N/A
-UnityObjectToViewPos	[function]	N/A
+UnityObjectToClipPos	[function]	Transforms a point from object space to the camera’s clip space in homogeneous coordinates. This is the equivalent of mul(UNITY_MATRIX_MVP, float4(pos, 1.0)), and should be used in its place.
+UnityObjectToViewPos	[function]	Transforms a point from object space to view space. This is the equivalent of mul(UNITY_MATRIX_MV, float4(pos, 1.0)).xyz, and should be used in its place.
+WorldSpaceViewDir	[function]	Returns world space direction (not normalized) from given object space vertex position towards the camera.
+ObjSpaceViewDir	[function]	Returns object space direction (not normalized) from given object space vertex position towards the camera.
+ParallaxOffset	[function]	calculates UV offset for parallax normal mapping.
+Luminance	[function]	Converts color to luminance (grayscale).
+DecodeLightmap	[function]	Decodes color from Unity lightmap (RGBM or dLDR depending on platform).
+EncodeFloatRGBA	[function]	Encodes [0..1) range float into RGBA color, for storage in low precision render target.
+DecodeFloatRGBA	[function]	Decodes RGBA color into a float.
+EncodeFloatRG	[function]	Encodes [0..1) range float into a float2.
+DecodeFloatRG	[function]	Decodes a previously-encoded RG float.
+EncodeViewNormalStereo	[function]	Encodes view space normal into two numbers in 0..1 range.
+DecodeViewNormalStereo	[function]	Decodes view space normal from enc4.xy.
+WorldSpaceLightDir	[function]	Computes world space direction (not normalized) to light, given object space vertex position.
+ObjSpaceLightDir	[function]	Computes object space direction (not normalized) to light, given object space vertex position.
+Shade4PointLights	[function]	Computes illumination from four point lights, with light data tightly packed into vectors. Forward rendering uses this to compute per-vertex lighting.
+ComputeScreenPos	[function]	Computes texture coordinate for doing a screenspace-mapped texture sample. Input is clip space position.
+ComputeGrabScreenPos	[function]	Computes texture coordinate for sampling a GrabPass texure. Input is clip space position.
+ShadeVertexLights	[function]	Computes illumination from four per-vertex lights and ambient, given object space position & normal.
+SHADER_API_D3D11	[macro]	Direct3D 11
+SHADER_API_GLCORE	[macro]	Desktop OpenGL “core” (GL 3/4)
+SHADER_API_GLES	[macro]	OpenGL ES 2.0
+SHADER_API_GLES3	[macro]	OpenGL ES 3.0/3.1
+SHADER_API_METAL	[macro]	iOS/Mac Metal
+SHADER_API_VULKAN	[macro]	Vulkan
+SHADER_API_D3D11_9X	[macro]	Direct3D 11 “feature level 9.x” target for Universal Windows Platform
+SHADER_API_DESKTOP	[macro]	Windows, Mac and Linux desktop platforms, WebGL, Stadia
+SHADER_API_MOBILE	[macro]	iOS and Android mobile platforms, tvOS
+SHADER_TARGET_GLSL	[macro]
+SHADER_TARGET	[macro]	is defined to a numeric value that matches the Shader target compilation model (that is, matching #pragma target directive).
+UNITY_VERSION	[macro]	contains the numeric value of the Unity version.
+UNITY_BRANCH	[macro]	Add this before conditional statements to tell the compiler that this should be compiled into an actual branch. Expands to [branch] when on HLSL platforms.
+UNITY_FLATTEN	[macro]	Add this before conditional statements to tell the compiler that this should be flattened to avoid an actual branch instruction. Expands to [flatten] when on HLSL platforms.
+UNITY_NO_SCREENSPACE_SHADOWS	[macro]	Defined on platforms that do not use cascaded screenspace shadowmaps (mobile platforms).
+UNITY_NO_LINEAR_COLORSPACE	[macro]	Defined on platforms that do not support Linear color space (mobile platforms).
+UNITY_NO_RGBM	[macro]	Defined on platforms where RGBM compression for lightmaps is not used (mobile platforms).
+UNITY_NO_DXT5nm	[macro]	Defined on platforms that do not use DXT5nm normal-map compression (mobile platforms).
+UNITY_FRAMEBUFFER_FETCH_AVAILABLE	[macro]	Defined on platforms where “framebuffer color fetch” functionality can be available (generally iOS platforms - OpenGL ES 2.0, 3.0 and Metal).
+UNITY_USE_RGBA_FOR_POINT_SHADOWS	[macro]	Defined on platforms where point light shadowmaps use RGBA Textures with encoded depth (other platforms use single-channel floating point Textures).
+UNITY_ATTEN_CHANNEL	[macro]	Defines which channel of light attenuation Texture contains the data; used in per-pixel lighting code. Defined to either ‘r’ or ‘a’.
+UNITY_HALF_TEXEL_OFFSET	[macro]	Defined on platforms that need a half-texel offset adjustment in mapping texels to pixels.
+UNITY_UV_STARTS_AT_TOP	[macro]		Always defined with value of 1 or 0. A value of 1 is on platforms where Texture V coordinate is 0 at the “top” of the Texture. Direct3D-like platforms use value of 1; OpenGL-like platforms use value of 0.
+UNITY_MIGHT_NOT_HAVE_DEPTH_Texture	[macro]	Defined if a platform might emulate shadow maps or depth Textures by manually rendering depth into a Texture.
+UNITY_PROJ_COORD	[macro]		Given a 4-component vector, this returns a Texture coordinate suitable for projected Texture reads. On most platforms this returns the given value directly.
+UNITY_NEAR_CLIP_VALUE	[macro]	Defined to the value of near clipping plane Direct3D-like platforms use 1.0 while OpenGL-like platforms use –1.0.
+UNITY_VPOS_TYPE	[macro]	Defines the data type required for pixel position input (VPOS): float2 on D3D9, float4 elsewhere.
+UNITY_CAN_COMPILE_TESSELLATION	[macro]	Defined when the Shader compiler “understands” the tessellation Shader HLSL syntax (currently only D3D11).
+UNITY_INITIALIZE_OUTPUT	[macro]	Initializes the variable name of given type to zero.
+UNITY_COMPILER_HLSL	[macro]	Indicates which Shader compiler is being used to compile Shaders.
+UNITY_COMPILER_HLSL2GLSL	[macro]	Indicates which Shader compiler is being used to compile Shaders.
+UNITY_COMPILER_CG	[macro]	Indicates which Shader compiler is being used to compile Shaders.
+UNITY_REVERSED_Z	[macro]	defined on plaftorms using reverse Z buffer. Stored Z values are in the range 1..0 instead of 0..1.
+UNITY_DECLARE_SHADOWMAP	[macro]	Declares a shadowmap Texture variable with name “tex”.
+UNITY_SAMPLE_SHADOW	[macro]	Samples shadowmap Texture “tex” at given “uv” coordinate (XY components are Texture location, Z component is depth to compare with). Returns single float value with the shadow term in 0..1 range.
+UNITY_SAMPLE_SHADOW_PROJ	[macro]	Similar to above, but does a projective shadowmap read. “uv” is a float4, all other components are divided by .w for doing the lookup.
+UNITY_DECLARE_TEX2D	[macro]	Declares a Texture and Sampler pair.
+UNITY_DECLARE_TEX2D_NOSAMPLER	[macro]	Declares a Texture without a Sampler.
+UNITY_DECLARE_TEX2DARRAY	[macro]	Declares a Texture array Sampler variable.
+UNITY_SAMPLE_TEX2D	[macro]	Sample from a Texture and Sampler pair, using given Texture coordinate.
+UNITY_SAMPLE_TEX2D_SAMPLER	[macro]	Sample from Texture (name), using a Sampler from another Texture (samplername).
+UNITY_SAMPLE_TEX2DARRAY	[macro]	Sample from a Texture array with a float3 UV; the z component of the coordinate is array element index.
+UNITY_SAMPLE_TEX2DARRAY_LOD	[macro]	Sample from a Texture array with an explicit mipmap level.
+UNITY_PASS_FORWARDBASE	[macro]	Forward rendering base pass (main directional light, lightmaps, SH).
+UNITY_PASS_FORWARDADD	[macro]	Forward rendering additive pass (one light per pass).
+UNITY_PASS_DEFERRED	[macro]	Deferred shading pass (renders G-buffer).
+UNITY_PASS_SHADOWCASTER	[macro]	Shadow caster and depth Texture rendering pass.
+UNITY_PASS_PREPASSBASE	[macro]	Legacy deferred lighting base pass (renders normals and specular exponent).
+UNITY_PASS_PREPASSFINAL	[macro]	Legacy deferred lighting final pass (applies lighting and Textures).
+UNITY_SHADER_NO_UPGRADE	[macro]	allows you to disable Unity from automatically upgrading or modifying your shader file.
+UNITY_TRANSFER_DEPTH	[macro]	computes eye space depth of the vertex and outputs it in o (which must be a float2). Use it in a vertex program when rendering into a depth texture. On platforms with native depth textures this macro does nothing at all, because Z buffer value is rendered implicitly.
+UNITY_OUTPUT_DEPTH	[macro]	returns eye space depth from i (which must be a float2). Use it in a fragment program when rendering into a depth texture. On platforms with native depth textures this macro always returns zero, because Z buffer value is rendered implicitly.
+COMPUTE_EYEDEPTH	[macro]	computes eye space depth of the vertex and outputs it in o. Use it in a vertex program when not rendering into a depth texture.
+DECODE_EYEDEPTH	[macro]	given high precision value from depth texture i, returns corresponding eye space depth.
+HLSLSupport.cginc	[file]	(automatically included) Helper macros and definitions for cross-platform shader compilation.
+UnityShaderVariables.cginc	[file]	(automatically included) Commonly used global variables.
+UnityCG.cginc	[file]	commonly used helper functions.
+AutoLight.cginc	[file]	lighting & shadowing functionality, e.g. surface shaders use this file internally.
+Lighting.cginc	[file]	standard surface shader lighting models; automatically included when you’re writing surface shaders.
+TerrainEngine.cginc	[file]	helper functions for Terrain & Vegetation shaders.
+POSITION	[vertex]	is the vertex position, typically a float3 or float4.
+NORMAL	[vertex]	is the vertex normal, typically a float3.
+TEXCOORD0	[vertex]	is the first UV coordinate, typically float2, float3 or float4.
+TEXCOORD1	[vertex]	is the second UV coordinate, typically float2, float3 or float4.
+TEXCOORD2	[vertex]	is the third UV coordinate, typically float2, float3 or float4.
+TEXCOORD3	[vertex]	is the fourth UV coordinate, typically float2, float3 or float4.
+TANGENT	[vertex]	is the tangent vector (used for normal mapping), typically a float4.
+COLOR	[vertex]	is the per-vertex color, typically a float4.
+UNITY_MATRIX_MVP	[variable]	Current model * view * projection matrix.
+UNITY_MATRIX_MV	[variable]	Current model * view matrix.
+UNITY_MATRIX_V	[variable]	Current view matrix.
+UNITY_MATRIX_P	[variable]	Current projection matrix.
+UNITY_MATRIX_VP	[variable]	Current view * projection matrix.
+UNITY_MATRIX_T_MV	[variable]	Transpose of model * view matrix.
+UNITY_MATRIX_IT_MV	[variable]	Inverse transpose of model * view matrix.
+unity_ObjectToWorld	[variable]	Current model matrix.
+unity_WorldToObject	[variable]	Inverse of current world matrix.
+_WorldSpaceCameraPos	[float3]	World space position of the camera.
+_ProjectionParams	[float4]	x is 1.0 (or –1.0 if currently rendering with a flipped projection matrix), y is the camera’s near plane, z is the camera’s far plane and w is 1/FarPlane.
+_ScreenParams	[float4]	x is the width of the camera’s target texture in pixels, y is the height of the camera’s target texture in pixels, z is 1.0 + 1.0/width and w is 1.0 + 1.0/height.
+_ZBufferParams	[float4]	Used to linearize Z buffer values. x is (1-far/near), y is (far/near), z is (x/far) and w is (y/far).
+unity_OrthoParams	[float4]	x is orthographic camera’s width, y is orthographic camera’s height, z is unused and w is 1.0 when camera is orthographic, 0.0 when perspective.
+unity_CameraProjection	[float4x4]	Camera’s projection matrix.
+unity_CameraInvProjection	[float4x4]	Inverse of camera’s projection matrix.
+unity_CameraWorldClipPlanes	[float4]	Camera frustum plane world space equations, in this order: left, right, bottom, top, near, far.
+_Time	[float4]	Time since level load (t/20, t, t*2, t*3), use to animate things inside the shaders.
+_SinTime	[float4]		Sine of time: (t/8, t/4, t/2, t).
+_CosTime	[float4]	Cosine of time: (t/8, t/4, t/2, t).
+unity_DeltaTime	[float4]	Delta time: (dt, 1/dt, smoothDt, 1/smoothDt).
+_LightColor0	[float4]	Light color.
+_WorldSpaceLightPos0	[float4]	Directional lights: (world space direction, 0). Other lights: (world space position, 1).
+unity_WorldToLight	[float4x4]	World-to-light matrix. Used to sample cookie & attenuation textures.
+unity_4LightPosX0	[float4]	(ForwardBase pass only) world space positions of first four non-important point lights.
+unity_4LightPosY0	[float4]	(ForwardBase pass only) world space positions of first four non-important point lights.
+unity_4LightPosZ0	[float4]	(ForwardBase pass only) world space positions of first four non-important point lights.
+unity_4LightAtten0	[float4]	(ForwardBase pass only) attenuation factors of first four non-important point lights.
+unity_LightColor	[half4[4]]	(ForwardBase pass only) colors of of first four non-important point lights.
+unity_WorldToShadow	[float4x4[4]]	World-to-shadow matrices. One matrix for Spot Lights, up to four for directional light cascades.
+_LightColor	[float]	Light color.
+unity_WorldToLight	[float4x4]	World-to-light matrix. Used to sample cookie & attenuation textures.
+unity_WorldToShadow	[float4x4[4]]	World-to-shadow matrices. One matrix for Spot Lights, up to four for directional light cascades.
+unity_LightColor	[half4[8]]	Light colors.
+unity_LightPosition	[float4[8]]	View-space light positions. (-direction,0) for directional lights; (position,1) for Point or Spot Lights.
+unity_LightAtten	[half4[8]]	Light attenuation factors. x is cos(spotAngle/2) or –1 for non-Spot Lights; y is 1/cos(spotAngle/4) or 1 for non-Spot Lights; z is quadratic attenuation; w is squared light range.
+unity_SpotDirection	[float4[8]]	View-space Spot Lights positions; (0,0,1,0) for non-Spot Lights.
+unity_Lightmap	[Texture2D]	Contains lightmap information.
+unity_LightmapST	[float4[8]]	Scales and translates the UV information to the correct range to sample the lightmap texture.
+unity_AmbientSky	[fixed4]	Sky ambient lighting color in gradient ambient lighting case.
+unity_AmbientEquator	[fixed4]	Equator ambient lighting color in gradient ambient lighting case.
+unity_AmbientGround	[fixed4]	Ground ambient lighting color in gradient ambient lighting case.
+unity_IndirectSpecColor	[fixed4]	If you use a skybox, this is the average color of the skybox, which Unity calculates using the DC component of the spherical harmonics data in the ambient probe. Otherwise this is black.
+UNITY_LIGHTMODEL_AMBIENT	[fixed4]	Ambient lighting color (sky color in gradient ambient case). Legacy variable.
+unity_FogColor	[fixed4]	Fog color.
+unity_FogParams	[fixed4]	Parameters for fog calculation: (density / sqrt(ln(2)), density / ln(2), –1/(end-start), end/(end-start)). x is useful for Exp2 fog mode, y for Exp mode, z and w for Linear mode.
+unity_LODFade	[float4]	Level-of-detail fade when using LODGroup. x is fade (0..1), y is fade quantized to 16 levels, z and w unused.
+_TextureSampleAdd	[float4]	Set automatically by Unity for UI only based on whether the texture being used is in Alpha8 format (the value is set to (1,1,1,0)) or not (the value is set to (0,0,0,0)).
+double2
+double2x2
+double2x3
+double2x4
+double3
+double3x2
+double3x3
+double3x4
+double4
+double4x2
+double4x3
+double4x4
+float
+float2
+float2x2
+float2x3
+float2x4
+float3
+float3x2
+float3x3
+float3x4
+float4
+float4x2
+float4x3
+float4x4
+half
+half2
+half3
+half4
+int2
+int2x2
+int2x3
+int2x4
+int3
+int3x2
+int3x3
+int3x4
+int4
+int4x2
+int4x3
+int4x4
+math
+noise
+quaternion
+uint2
+uint2x2
+uint2x3
+uint2x4
+uint3
+uint3x2
+uint3x3
+uint3x4
+uint4
+uint4x2
+uint4x3
+uint4x4
+Shader
+Properties
+SubShader
+Pass
+UsePass
+GrabPass
+Tags
+Range
+Float
+Int
+Color
+Vector
+2D
+Cube
+3D
+Cull
+ZTest
+ZWrite
+Offset
+Blend
+BlendOp
+AlphaToMask
+ColorMask
+Stencil
+Ref
+ReadMask
+WriteMask
+Comp
+CompFront
+CompBack
+PassFront
+PassBack
+Fail
+FailFront
+FailBack
+ZFail
+ZFailFront
+ZFailBack
+Name
+Material
+Lighting
+SeparateSpecular
+ColorMaterial
+Diffuse
+Ambient
+Specular
+Shininess
+Emission
+SetTexture
+combine
+constantColor
+AlphaTest
+Fog
+Mode
+Density
+Range
+BindChannels
+Bind
+LOD
+Fallback
+CustomEditor
+Category
+CGPROGRAM
+CGINCLUDE
+ENDCG
+asm
+asm_fragment
+auto
+break
+case
+catch
+class
+column_major
+compile
+const
+const_cast
+continue
+decl
+default
+delete
+discard
+do
+dword
+dynamic_cast
+else
+emit
+enum
+explicit
+extern
+for
+friend
+get
+goto
+if
+in
+inline
+inout
+interface
+matrix
+mutable
+namespace
+new
+operator
+out
+packed
+pass
+pixelfragment
+pixelshader
+private
+protected
+public
+register
+reinterpret_cast
+return
+row_major
+sampler_state
+shared
+sizeof
+static
+static_cast
+string
+struct
+switch
+technique
+template
+texture
+texture1D
+texture2D
+texture3D
+textureCUBE
+textureRECT
+this
+throw
+try
+typedef
+typeid
+typename
+uniform
+union
+using
+vector
+vertexfragment
+vertexshader
+virtual
+volatile
+while
+TRUE
+true
+FALSE
+false
+NULL
+BINORMAL
+BLENDINDICES
+BLENDWEIGHT
+CENTROID
+CLPV
+CONTROLPOINT_ID
+COL
+COLOR
+DEPR
+DEPTH
+DIFFUSE
+EDGETESS
+FACE
+FLAT
+FOG
+FOGC
+FOGCOORD
+FOGP
+HPOS
+INNERTESS
+INSTANCEID
+NOPERSPECTIVE
+NORMAL
+PATCH
+POSITION
+PRIMITIVEID
+PSIZ
+PSIZE
+SPECULAR
+SV_Depth
+SV_POSITION
+SV_Target
+SV_VertexID
+TANGENT
+TESSCOORD
+TESSFACTOR
+UV
+VERTEXID
+VFACE
+VPOS
+abs	[node]	Returns the absolute value of the input In. Components of the input Dynamic Vector that are positive will remain positive and components that are negative will be inverted and become positive.
+acos
+all	[node]	Returns true if all components of the input In are non-zero. This is useful for Branching.
+any	[node]	Returns true if any of the components of the input In are non-zero. This is useful for Branching.
+asin
+atan
+atan2
+ceil	[node]	Returns the smallest integer value, or whole number, that is greater than or equal to the value of input In.
+clamp	[node]	Returns the smallest integer value, or whole number, that is greater than or equal to the value of input In.
+clip
+cosh
+cross	[node]	Returns the cross product of the values of the inputs A and B. The cross product of two vectors results in a third vector which is perpendicular to the two input vectors. The result's magnitude is equal to the magnitudes of the two inputs multiplied together and then multiplied by the sine of the angle between the inputs. You can determine the direction of the result vector using the "left hand rule".
+degress
+determinant	[node]	Returns the determinant of the matrix defined by input In. It can be viewed as the scaling factor of the transformation described by the matrix.
+dot	[node]	Returns the dot product, or scalar product, of the two input vectors A and B.
+exp	[node]	Returns the exponential value of input In. The exponential base can be switched between base-e and base 2 from the Base dropdown on the node.	
+exp2	[node]	Like exp, base 2.
+floor	[node]	Returns the largest integer value, or whole number, that is less than or equal to the value of input In.
+fmod
+frac	[node]	Returns the fractional (or decimal) part of input In; which is greater than or equal to 0 and less than 1.
+frexp
+fwidth
+isfinite
+isinf
+isnan
+ldexp
+lerp	[node]	Returns the result of linearly interpolating between input A and input B by input T. The value of input T is clamped to the range of 0 to 1.
+lit
+log	[node]	Returns the logarithm of input In. Log is the inverse operation to the Exponential Node.
+log2	[node]	Like log, base 2.
+log10	[node]	Like log, base 10.
+max	[node]	Returns the largest of the two inputs values A and B.
+min	[node]	Returns the smallest of the two inputs values A and B.
+modf
+mul	[node]	Returns the result of input A multiplied by input B.
+noise
+pow	[node]	Returns the result of input A to the power of input B.
+radians
+round
+rsqrt
+saturate	[node]	Returns the value of input In clamped between 0 and 1.
+sign	[node]	Per component, returns -1 if the value of input In is less than zero, 0 if equal to zero and 1 if greater than zero.
+sin	[node]	Returns the sine of the value of input In.
+cos	[node]	Returns the cosine of the value of input In.
+sinh
+smoothstep	[node]	Returns the result of a smooth Hermite interpolation between 0 and 1, if the value of input In is between the values of inputs Edge1 and Edge2 respectively. Returns 0 if the value of input In is less than the value of input Step1 and 1 if greater than the value of input Step2.
+step	[node]	Per component, returns 1 if the value of input In is greater than or equal to the value of input Edge, otherwise returns 0.
+sqrt
+tan	[node]	Returns the tangent of the value of input In.
+tanh
+transpose	[node]	Returns the transposed value of the matrix defined by input In. This can be seen as the operation of flipping the matrix over its diagonal. The result is that it switches the row and column indices of the matrix.
+trunc	[node]	Returns the integer, or whole number, component of the value of input In. For example, given an input value of 1.7, this node will return the value 1.0.
+distance	[node]	Returns the euclidean distance between the values of the inputs A and B. This is useful for, among other things, calculating the distance between two points in space and is commonly used in calculating a Signed Distance Function.
+faceforward
+length	[node]	Returns the length of input In. This is also known as magnitude. A vector's length is calculated with Pythagorean Theorum.
+normalize	[node]	Returns the normalized value of input In. The output vector will have the same direction as input In but a length of 1.
+reflect	[node]	Returns a reflection vector using input In and a surface normal Normal.
+refract
+tex1D
+tex1Dproj
+tex2D
+tex2Dproj
+tex3D
+tex3Dproj
+texRECT
+texRECTproj
+texCUBE
+texCUBEproj
+ddx	[node]	Returns the partial derivative of the input In with respect to the screen-space x-coordinate. This node can only be used in the pixel shader stage.
+ddy	[node]	Returns the partial derivative of the input In with respect to the screen-space y-coordinate. This node can only be used in the pixel shader stage.
+ddxy	[node]	Returns the sum of both partial derivatives of input In, with respect to the screen-space x-coordinate and screen-space y-coordinate respectively. This node can only be used in the pixel shader stage.
+debug
