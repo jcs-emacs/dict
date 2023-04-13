@@ -452,3 +452,15 @@ ddx	[node]	Returns the partial derivative of the input In with respect to the sc
 ddy	[node]	Returns the partial derivative of the input In with respect to the screen-space y-coordinate. This node can only be used in the pixel shader stage.
 ddxy	[node]	Returns the sum of both partial derivatives of input In, with respect to the screen-space x-coordinate and screen-space y-coordinate respectively. This node can only be used in the pixel shader stage.
 debug
+#define	[preprocessor]	
+#elif	[preprocessor]	
+#else	[preprocessor]	
+#endif	[preprocessor]	
+#error	[preprocessor]	
+#if	[preprocessor]	
+#ifdef	[preprocessor]	
+#ifndef	[preprocessor]	
+#include	[preprocessor]	
+#line	[preprocessor]	
+#pragma	[preprocessor]	
+#undef	[preprocessor]	
