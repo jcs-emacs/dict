@@ -94,45 +94,45 @@ UNITY_MATRIX_T_MV	[variable]	Transpose of model * view matrix.
 UNITY_MATRIX_IT_MV	[variable]	Inverse transpose of model * view matrix.
 unity_ObjectToWorld	[variable]	Current model matrix.
 unity_WorldToObject	[variable]	Inverse of current world matrix.
-_WorldSpaceCameraPos	[float3]	World space position of the camera.
-_ProjectionParams	[float4]	x is 1.0 (or –1.0 if currently rendering with a flipped projection matrix), y is the camera’s near plane, z is the camera’s far plane and w is 1/FarPlane.
-_ScreenParams	[float4]	x is the width of the camera’s target texture in pixels, y is the height of the camera’s target texture in pixels, z is 1.0 + 1.0/width and w is 1.0 + 1.0/height.
-_ZBufferParams	[float4]	Used to linearize Z buffer values. x is (1-far/near), y is (far/near), z is (x/far) and w is (y/far).
-unity_OrthoParams	[float4]	x is orthographic camera’s width, y is orthographic camera’s height, z is unused and w is 1.0 when camera is orthographic, 0.0 when perspective.
-unity_CameraProjection	[float4x4]	Camera’s projection matrix.
-unity_CameraInvProjection	[float4x4]	Inverse of camera’s projection matrix.
-unity_CameraWorldClipPlanes	[float4]	Camera frustum plane world space equations, in this order: left, right, bottom, top, near, far.
-_Time	[float4]	Time since level load (t/20, t, t*2, t*3), use to animate things inside the shaders.
-_SinTime	[float4]		Sine of time: (t/8, t/4, t/2, t).
-_CosTime	[float4]	Cosine of time: (t/8, t/4, t/2, t).
-unity_DeltaTime	[float4]	Delta time: (dt, 1/dt, smoothDt, 1/smoothDt).
-_LightColor0	[float4]	Light color.
-_WorldSpaceLightPos0	[float4]	Directional lights: (world space direction, 0). Other lights: (world space position, 1).
-unity_WorldToLight	[float4x4]	World-to-light matrix. Used to sample cookie & attenuation textures.
-unity_4LightPosX0	[float4]	(ForwardBase pass only) world space positions of first four non-important point lights.
-unity_4LightPosY0	[float4]	(ForwardBase pass only) world space positions of first four non-important point lights.
-unity_4LightPosZ0	[float4]	(ForwardBase pass only) world space positions of first four non-important point lights.
-unity_4LightAtten0	[float4]	(ForwardBase pass only) attenuation factors of first four non-important point lights.
-unity_LightColor	[half4[4]]	(ForwardBase pass only) colors of of first four non-important point lights.
-unity_WorldToShadow	[float4x4[4]]	World-to-shadow matrices. One matrix for Spot Lights, up to four for directional light cascades.
-_LightColor	[float]	Light color.
-unity_WorldToLight	[float4x4]	World-to-light matrix. Used to sample cookie & attenuation textures.
-unity_WorldToShadow	[float4x4[4]]	World-to-shadow matrices. One matrix for Spot Lights, up to four for directional light cascades.
-unity_LightColor	[half4[8]]	Light colors.
-unity_LightPosition	[float4[8]]	View-space light positions. (-direction,0) for directional lights; (position,1) for Point or Spot Lights.
-unity_LightAtten	[half4[8]]	Light attenuation factors. x is cos(spotAngle/2) or –1 for non-Spot Lights; y is 1/cos(spotAngle/4) or 1 for non-Spot Lights; z is quadratic attenuation; w is squared light range.
-unity_SpotDirection	[float4[8]]	View-space Spot Lights positions; (0,0,1,0) for non-Spot Lights.
-unity_Lightmap	[Texture2D]	Contains lightmap information.
-unity_LightmapST	[float4[8]]	Scales and translates the UV information to the correct range to sample the lightmap texture.
-unity_AmbientSky	[fixed4]	Sky ambient lighting color in gradient ambient lighting case.
-unity_AmbientEquator	[fixed4]	Equator ambient lighting color in gradient ambient lighting case.
-unity_AmbientGround	[fixed4]	Ground ambient lighting color in gradient ambient lighting case.
-unity_IndirectSpecColor	[fixed4]	If you use a skybox, this is the average color of the skybox, which Unity calculates using the DC component of the spherical harmonics data in the ambient probe. Otherwise this is black.
-UNITY_LIGHTMODEL_AMBIENT	[fixed4]	Ambient lighting color (sky color in gradient ambient case). Legacy variable.
-unity_FogColor	[fixed4]	Fog color.
-unity_FogParams	[fixed4]	Parameters for fog calculation: (density / sqrt(ln(2)), density / ln(2), –1/(end-start), end/(end-start)). x is useful for Exp2 fog mode, y for Exp mode, z and w for Linear mode.
-unity_LODFade	[float4]	Level-of-detail fade when using LODGroup. x is fade (0..1), y is fade quantized to 16 levels, z and w unused.
-_TextureSampleAdd	[float4]	Set automatically by Unity for UI only based on whether the texture being used is in Alpha8 format (the value is set to (1,1,1,0)) or not (the value is set to (0,0,0,0)).
+_WorldSpaceCameraPos	[variable]	World space position of the camera.
+_ProjectionParams	[variable]	x is 1.0 (or –1.0 if currently rendering with a flipped projection matrix), y is the camera’s near plane, z is the camera’s far plane and w is 1/FarPlane.
+_ScreenParams	[variable]	x is the width of the camera’s target texture in pixels, y is the height of the camera’s target texture in pixels, z is 1.0 + 1.0/width and w is 1.0 + 1.0/height.
+_ZBufferParams	[variable]	Used to linearize Z buffer values. x is (1-far/near), y is (far/near), z is (x/far) and w is (y/far).
+unity_OrthoParams	[variable]	x is orthographic camera’s width, y is orthographic camera’s height, z is unused and w is 1.0 when camera is orthographic, 0.0 when perspective.
+unity_CameraProjection	[variable]	Camera’s projection matrix.
+unity_CameraInvProjection	[variable]	Inverse of camera’s projection matrix.
+unity_CameraWorldClipPlanes	[variable]	Camera frustum plane world space equations, in this order: left, right, bottom, top, near, far.
+_Time	[variable]	Time since level load (t/20, t, t*2, t*3), use to animate things inside the shaders.
+_SinTime	[variable]		Sine of time: (t/8, t/4, t/2, t).
+_CosTime	[variable]	Cosine of time: (t/8, t/4, t/2, t).
+unity_DeltaTime	[variable]	Delta time: (dt, 1/dt, smoothDt, 1/smoothDt).
+_LightColor0	[variable]	Light color.
+_WorldSpaceLightPos0	[variable]	Directional lights: (world space direction, 0). Other lights: (world space position, 1).
+unity_WorldToLight	[variable]	World-to-light matrix. Used to sample cookie & attenuation textures.
+unity_4LightPosX0	[variable]	(ForwardBase pass only) world space positions of first four non-important point lights.
+unity_4LightPosY0	[variable]	(ForwardBase pass only) world space positions of first four non-important point lights.
+unity_4LightPosZ0	[variable]	(ForwardBase pass only) world space positions of first four non-important point lights.
+unity_4LightAtten0	[variable]	(ForwardBase pass only) attenuation factors of first four non-important point lights.
+unity_LightColor	[variable]	(ForwardBase pass only) colors of of first four non-important point lights.
+unity_WorldToShadow	[variable]	World-to-shadow matrices. One matrix for Spot Lights, up to four for directional light cascades.
+_LightColor	[variable]	Light color.
+unity_WorldToLight	[variable]	World-to-light matrix. Used to sample cookie & attenuation textures.
+unity_WorldToShadow	[variable]	World-to-shadow matrices. One matrix for Spot Lights, up to four for directional light cascades.
+unity_LightColor	[variable]	Light colors.
+unity_LightPosition	[variable]	View-space light positions. (-direction,0) for directional lights; (position,1) for Point or Spot Lights.
+unity_LightAtten	[variable]	Light attenuation factors. x is cos(spotAngle/2) or –1 for non-Spot Lights; y is 1/cos(spotAngle/4) or 1 for non-Spot Lights; z is quadratic attenuation; w is squared light range.
+unity_SpotDirection	[variable]	View-space Spot Lights positions; (0,0,1,0) for non-Spot Lights.
+unity_Lightmap	[variable]	Contains lightmap information.
+unity_LightmapST	[variable]	Scales and translates the UV information to the correct range to sample the lightmap texture.
+unity_AmbientSky	[variable]	Sky ambient lighting color in gradient ambient lighting case.
+unity_AmbientEquator	[variable]	Equator ambient lighting color in gradient ambient lighting case.
+unity_AmbientGround	[variable]	Ground ambient lighting color in gradient ambient lighting case.
+unity_IndirectSpecColor	[variable]	If you use a skybox, this is the average color of the skybox, which Unity calculates using the DC component of the spherical harmonics data in the ambient probe. Otherwise this is black.
+UNITY_LIGHTMODEL_AMBIENT	[variable]	Ambient lighting color (sky color in gradient ambient case). Legacy variable.
+unity_FogColor	[variable]	Fog color.
+unity_FogParams	[variable]	Parameters for fog calculation: (density / sqrt(ln(2)), density / ln(2), –1/(end-start), end/(end-start)). x is useful for Exp2 fog mode, y for Exp mode, z and w for Linear mode.
+unity_LODFade	[variable]	Level-of-detail fade when using LODGroup. x is fade (0..1), y is fade quantized to 16 levels, z and w unused.
+_TextureSampleAdd	[variable]	Set automatically by Unity for UI only based on whether the texture being used is in Alpha8 format (the value is set to (1,1,1,0)) or not (the value is set to (0,0,0,0)).
 double2
 double2x2
 double2x3
