@@ -133,6 +133,7 @@ unity_FogColor	[variable]	Fog color.
 unity_FogParams	[variable]	Parameters for fog calculation: (density / sqrt(ln(2)), density / ln(2), –1/(end-start), end/(end-start)). x is useful for Exp2 fog mode, y for Exp mode, z and w for Linear mode.
 unity_LODFade	[variable]	Level-of-detail fade when using LODGroup. x is fade (0..1), y is fade quantized to 16 levels, z and w unused.
 _TextureSampleAdd	[variable]	Set automatically by Unity for UI only based on whether the texture being used is in Alpha8 format (the value is set to (1,1,1,0)) or not (the value is set to (0,0,0,0)).
+double
 double2
 double2x2
 double2x3
@@ -162,6 +163,20 @@ half
 half2
 half3
 half4
+fixed
+fixed2
+fixed2x2
+fixed2x3
+fixed2x4
+fixed3
+fixed3x2
+fixed3x3
+fixed3x4
+fixed4
+fixed4x2
+fixed4x3
+fixed4x4
+int
 int2
 int2x2
 int2x3
@@ -177,6 +192,7 @@ int4x4
 math
 noise
 quaternion
+uint
 uint2
 uint2x2
 uint2x3
