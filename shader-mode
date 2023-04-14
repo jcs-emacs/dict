@@ -1,3 +1,5 @@
+UnityObjectToWorldNormal	[function]	Transform a point from object space to world normals
+UnityObjectToWorldDir	[function]	Transform a point from object space to world dir
 UnityObjectToClipPos	[function]	Transforms a point from object space to the camera’s clip space in homogeneous coordinates. This is the equivalent of mul(UNITY_MATRIX_MVP, float4(pos, 1.0)), and should be used in its place.
 UnityObjectToViewPos	[function]	Transforms a point from object space to view space. This is the equivalent of mul(UNITY_MATRIX_MV, float4(pos, 1.0)).xyz, and should be used in its place.
 WorldSpaceViewDir	[function]	Returns world space direction (not normalized) from given object space vertex position towards the camera.
