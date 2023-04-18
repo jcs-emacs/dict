@@ -482,3 +482,34 @@ debug
 #line	[preprocessor]	
 #pragma	[preprocessor]	
 #undef	[preprocessor]	
+Add	[Blend Op]	Add source and destination together.
+Sub	[Blend Op]	Subtract destination from source.
+RevSub	[Blend Op]	Subtract source from destination.
+Min	[Blend Op]	Use the smaller of source and destination.
+Max	[Blend Op]	Use the larger of source and destination.
+LogicalClear	[Blend Op]	Logical operation: Clear (0) DX11.1 only.
+LogicalSet	[Blend Op]	Logical operation: Set (1) DX11.1 only.
+LogicalCopy	[Blend Op]	Logical operation: Copy (s) DX11.1 only.
+LogicalCopyInverted	[Blend Op]	Logical operation: Copy inverted (!s) DX11.1 only.
+LogicalNoop	[Blend Op]	Logical operation: Noop (d) DX11.1 only.
+LogicalInvert	[Blend Op]	Logical operation: Invert (!d) DX11.1 only.
+LogicalAnd	[Blend Op]	Logical operation: And (s & d) DX11.1 only.
+LogicalNand	[Blend Op]	Logical operation: Nand !(s & d) DX11.1 only.
+LogicalOr	[Blend Op]	Logical operation: Or (s | d) DX11.1 only.
+LogicalNor	[Blend Op]	Logical operation: Nor !(s | d) DX11.1 only.
+LogicalXor	[Blend Op]	Logical operation: Xor (s ^ d) DX11.1 only.
+LogicalEquiv	[Blend Op]	Logical operation: Equivalence !(s ^ d) DX11.1 only.
+LogicalAndReverse	[Blend Op]	Logical operation: Reverse And (s & !d) DX11.1 only.
+LogicalAndInverted	[Blend Op]	Logical operation: Inverted And (!s & d) DX11.1 only.
+LogicalOrReverse	[Blend Op]	Logical operation: Reverse Or (s | !d) DX11.1 only.
+LogicalOrInverted	[Blend Op]	Logical operation: Inverted Or (!s | d) DX11.1 only.
+One	[Blend Factor]	The value of one - use this to let either the source or the destination color come through fully.
+Zero	[Blend Factor]	The value zero - use this to remove either the source or the destination values.
+SrcColor	[Blend Factor]	The value of this stage is multiplied by the source color value.
+SrcAlpha	[Blend Factor]	The value of this stage is multiplied by the source alpha value.
+DstColor	[Blend Factor]	The value of this stage is multiplied by frame buffer source color value.
+DstAlpha	[Blend Factor]	The value of this stage is multiplied by frame buffer source alpha value.
+OneMinusSrcColor	[Blend Factor]	The value of this stage is multiplied by (1 - source color).
+OneMinusSrcAlpha	[Blend Factor]	The value of this stage is multiplied by (1 - source alpha).
+OneMinusDstColor	[Blend Factor]	The value of this stage is multiplied by (1 - destination color).
+OneMinusDstAlpha	[Blend Factor]	The value of this stage is multiplied by (1 - destination alpha).
