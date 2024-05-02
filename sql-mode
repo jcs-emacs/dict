@@ -1,0 +1,80 @@
+ADD	[keyword]	Adds a column in an existing table
+ADD CONSTRAINT	[keyword]	Adds a constraint after a table is already created
+ALL	[keyword]	Returns true if all of the subquery values meet the condition
+ALTER	[keyword]	Adds, deletes, or modifies columns in a table, or changes the data type of a column in a table
+ADD	[keyword]	Adds a column in an existing table
+ALTER COLUMN	[keyword]	Changes the data type of a column in a table
+ALTER TABLE	[keyword]	Adds, deletes, or modifies columns in a table
+AND	[keyword]	Only includes rows where both conditions is true
+ANY	[keyword]	Returns true if any of the subquery values meet the condition
+AS	[keyword]	Renames a column or table with an alias
+ASC	[keyword]	Sorts the result set in ascending order
+BACKUP DATABASE	[keyword]	Creates a back up of an existing database
+BETWEEN	[keyword]		Selects values within a given range
+CASE	[keyword]	Creates different outputs based on conditions
+CHECK	[keyword]	A constraint that limits the value that can be placed in a column
+COLUMN	[keyword]		Changes the data type of a column or deletes a column in a table
+CONSTRAINT	[keyword]	Adds or deletes a constraint
+CREATE	[keyword]		Creates a database, index, view, table, or procedure
+CREATE DATABASE	[keyword]	Creates a new SQL database
+CREATE INDEX	[keyword]	Creates an index on a table (allows duplicate values)
+CREATE OR REPLACE VIEW	[keyword]		Updates a view
+CREATE TABLE	[keyword]	Creates a new table in the database
+CREATE PROCEDURE	[keyword]	Creates a stored procedure
+CREATE UNIQUE INDEX	[keyword]	Creates a unique index on a table (no duplicate values)
+CREATE VIEW	[keyword]	Creates a view based on the result set of a SELECT statement
+DATABASE	[keyword]	Creates or deletes an SQL database
+DEFAULT	[keyword]	A constraint that provides a default value for a column
+DELETE	[keyword]	Deletes rows from a table
+DESC	[keyword]		Sorts the result set in descending order
+DISTINCT	[keyword]	Selects only distinct (different) values
+DROP	[keyword]	Deletes a column, constraint, database, index, table, or view
+DROP COLUMN	[keyword]	Deletes a column in a table
+DROP CONSTRAINT	[keyword]	Deletes a UNIQUE, PRIMARY KEY, FOREIGN KEY, or CHECK constraint
+DROP DATABASE	[keyword]		Deletes an existing SQL database
+DROP DEFAULT	[keyword]	Deletes a DEFAULT constraint
+DROP INDEX	[keyword]	Deletes an index in a table
+DROP TABLE	[keyword]	Deletes an existing table in the database
+DROP VIEW	[keyword]	Deletes a view
+EXEC	[keyword]	Executes a stored procedure
+EXISTS	[keyword]	Tests for the existence of any record in a subquery
+FOREIGN KEY	[keyword]	A constraint that is a key used to link two tables together
+FROM	[keyword]		Specifies which table to select or delete data from
+FULL OUTER JOIN	[keyword]		Returns all rows when there is a match in either left table or right table
+GROUP BY	[keyword]	Groups the result set (used with aggregate functions: COUNT, MAX, MIN, SUM, AVG)
+HAVING	[keyword]	Used instead of WHERE with aggregate functions
+IN	[keyword]	Allows you to specify multiple values in a WHERE clause
+INDEX	[keyword]	Creates or deletes an index in a table
+INNER JOIN	[keyword]	Returns rows that have matching values in both tables
+INSERT INTO	[keyword]	Inserts new rows in a table
+INSERT INTO SELECT	[keyword]		Copies data from one table into another table
+IS NULL	[keyword]	Tests for empty values
+IS NOT NULL	[keyword]	Tests for non-empty values
+JOIN	[keyword]	Joins tables
+LEFT JOIN	[keyword]		Returns all rows from the left table, and the matching rows from the right table
+LIKE	[keyword]	Searches for a specified pattern in a column
+LIMIT	[keyword]	Specifies the number of records to return in the result set
+NOT	[keyword]	Only includes rows where a condition is not true
+NOT NULL	[keyword]		A constraint that enforces a column to not accept NULL values
+OR	[keyword]	Includes rows where either condition is true
+ORDER BY	[keyword]	Sorts the result set in ascending or descending order
+OUTER JOIN	[keyword]		Returns all rows when there is a match in either left table or right table
+PRIMARY KEY	[keyword]	A constraint that uniquely identifies each record in a database table
+PROCEDURE	[keyword]	A stored procedure
+RIGHT JOIN	[keyword]	Returns all rows from the right table, and the matching rows from the left table
+ROWNUM	[keyword]	Specifies the number of records to return in the result set
+SELECT	[keyword]	Selects data from a database
+SELECT DISTINCT	[keyword]	Selects only distinct (different) values
+SELECT INTO	[keyword]	Copies data from one table into a new table
+SELECT TOP	[keyword]	Specifies the number of records to return in the result set
+SET	[keyword]	Specifies which columns and values that should be updated in a table
+TABLE	[keyword]	Creates a table, or adds, deletes, or modifies columns in a table, or deletes a table or data inside a table
+TOP	[keyword]	Specifies the number of records to return in the result set
+TRUNCATE TABLE	[keyword]		Deletes the data inside a table, but not the table itself
+UNION	[keyword]	Combines the result set of two or more SELECT statements (only distinct values)
+UNION ALL	[keyword]	Combines the result set of two or more SELECT statements (allows duplicate values)
+UNIQUE	[keyword]	A constraint that ensures that all values in a column are unique
+UPDATE	[keyword]		Updates existing rows in a table
+VALUES	[keyword]	Specifies the values of an INSERT INTO statement
+VIEW	[keyword]	Creates, updates, or deletes a view
+WHERE	[keyword]	Filters a result set to include only records that fulfill a specified condition
