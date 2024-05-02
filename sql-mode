@@ -2,7 +2,6 @@ ADD	[keyword]	Adds a column in an existing table
 ADD CONSTRAINT	[keyword]	Adds a constraint after a table is already created
 ALL	[keyword]	Returns true if all of the subquery values meet the condition
 ALTER	[keyword]	Adds, deletes, or modifies columns in a table, or changes the data type of a column in a table
-ADD	[keyword]	Adds a column in an existing table
 ALTER COLUMN	[keyword]	Changes the data type of a column in a table
 ALTER TABLE	[keyword]	Adds, deletes, or modifies columns in a table
 AND	[keyword]	Only includes rows where both conditions is true
